@@ -1,10 +1,17 @@
-import React from 'react';
-import {Container, Header, Content, Button, Text} from 'native-base';
-import {View} from 'react-native';
+import React, {useEffect} from 'react';
+import {Container, Header, Content, Button} from 'native-base';
+import {View, Text} from 'react-native';
+import Axios from 'axios';
 
 import styles from '../styles/Profile';
 
 const Profile = ({navigation}) => {
+  useEffect(() => {
+    //componentDidMount & componentDidUpdate
+    Axios.get('http://192.168.100.10:8080/')
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  }, []);
   return (
     <Container style={styles.containerProfile}>
       <Header style={styles.headerProfile} />
@@ -12,19 +19,12 @@ const Profile = ({navigation}) => {
         <View style={styles.viewProfile}>
           <Text style={styles.textProfile}>Halaman Profile</Text>
         </View>
-        <Button onPress={() => navigation.navigate('Home')} dark>
-          <Text style={styles.textProfile}>Go To Home</Text>
+        <Button onPress={() => navigation.navigate('List')} dark>
+          <Text style={styles.textProfile}>Go To List</Text>
         </Button>
       </Content>
     </Container>
   );
 };
-
-// const styles = StyleSheet.create({
-//   textProfile: {
-//     fontSize: 40,
-//     textAlign: 'center',
-//   },
-// });
 
 export default Profile;
