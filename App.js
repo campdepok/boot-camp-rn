@@ -5,14 +5,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
-import Dimensions from './src/screens/Dimensions';
+import ListItem from './src/screens/ListItem';
 
 const {Navigator, Screen} = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Dimensions">
+      <Navigator initialRouteName="Profile">
         <Screen name="Home" component={Home} />
         <Screen
           name="Profile"
@@ -22,7 +22,7 @@ const App = () => {
             title: 'Halaman Profile',
           }}
         />
-        <Screen name="Dimensions" component={Dimensions} />
+        <Screen name="List" component={ListItem} />
       </Navigator>
     </NavigationContainer>
   );
